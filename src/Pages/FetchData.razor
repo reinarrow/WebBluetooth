@@ -1,7 +1,9 @@
 ﻿@page "/fetchdata"
 
-@using WebBluetooth.Data
-@inject WeatherForecastService ForecastService
+@using WebBluetooth.Data.Models
+@using WebBluetooth.Services
+
+@inject IWeatherForecastService forecastService
 
 <h1>Weather forecast</h1>
 
@@ -37,10 +39,10 @@ else
 }
 
 @code {
-    private WeatherForecast[] forecasts;
+    private List<WeatherForecast> forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        forecasts = await forecastService.CalculateForecast(DateTime.Now);
     }
 }

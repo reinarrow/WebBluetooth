@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebBluetooth.Data;
+using WebBluetooth.Services;
+using WebBluetooth.Data.Repositories;
+using WebBluetooth.Data.Repositories.Interfaces;
 
 namespace WebBluetooth
 {
@@ -28,7 +30,13 @@ namespace WebBluetooth
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+
+            // Services
+            services.AddTransient<IWeatherForecastService, WeatherForecastService>();
+            services.AddTransient<IBluetothService, BluetothService>();
+
+            // Repositories
+            services.AddTransient<IWeatherForecastRepository, WeatherForecastRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

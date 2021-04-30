@@ -1,6 +1,6 @@
 using System;
 
-namespace WebBluetooth.Data
+namespace WebBluetooth.Data.Models
 {
     public class WeatherForecast
     {
