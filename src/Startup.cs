@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using WebBluetooth.Services;
 using WebBluetooth.Data.Repositories;
 using WebBluetooth.Data.Repositories.Interfaces;
+using Blazm.Bluetooth;
 
 namespace WebBluetooth
 {
@@ -30,6 +31,7 @@ namespace WebBluetooth
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddBlazmBluetooth();
 
             // Services
             services.AddTransient<IWeatherForecastService, WeatherForecastService>();
